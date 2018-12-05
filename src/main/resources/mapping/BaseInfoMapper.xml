@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yckj.commonmapper.mapper.BaseInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.yckj.commonmapper.model.BaseInfo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="cameraId" property="cameraid" jdbcType="INTEGER" />
+    <result column="faceId" property="faceid" jdbcType="VARCHAR" />
+    <result column="reId" property="reid" jdbcType="VARCHAR" />
+    <result column="face_feature" property="faceFeature" jdbcType="VARCHAR" />
+    <result column="body_feature" property="bodyFeature" jdbcType="VARCHAR" />
+    <result column="roi" property="roi" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Where" >
+    <if test="id != null" > and id=#{id} </if>
+    <if test="cameraid != null" > and cameraId=#{cameraid} </if>
+    <if test="faceid != null" > and faceId=#{faceid} </if>
+    <if test="reid != null" > and reId=#{reid} </if>
+    <if test="faceFeature != null" > and face_feature=#{faceFeature} </if>
+    <if test="bodyFeature != null" > and body_feature=#{bodyFeature} </if>
+    <if test="roi != null" > and roi=#{roi} </if>
+    <if test="status != null" > and status=#{status} </if>
+    <if test="createTime != null" > and create_time=#{createTime} </if>
+    <if test="updateTime != null" > and update_time=#{updateTime} </if>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, cameraId, faceId, reId, face_feature, body_feature, roi, status, create_time, 
+    update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from base_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from base_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yckj.commonmapper.model.BaseInfo" >
+    insert into base_info (id, cameraId, faceId, 
+      reId, face_feature, body_feature, 
+      roi, status, create_time, 
+      update_time)
+    values (#{id,jdbcType=INTEGER}, #{cameraid,jdbcType=INTEGER}, #{faceid,jdbcType=VARCHAR}, 
+      #{reid,jdbcType=VARCHAR}, #{faceFeature,jdbcType=VARCHAR}, #{bodyFeature,jdbcType=VARCHAR}, 
+      #{roi,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yckj.commonmapper.model.BaseInfo" >
+    insert into base_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="cameraid != null" >
+        cameraId,
+      </if>
+      <if test="faceid != null" >
+        faceId,
+      </if>
+      <if test="reid != null" >
+        reId,
+      </if>
+      <if test="faceFeature != null" >
+        face_feature,
+      </if>
+      <if test="bodyFeature != null" >
+        body_feature,
+      </if>
+      <if test="roi != null" >
+        roi,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="cameraid != null" >
+        #{cameraid,jdbcType=INTEGER},
+      </if>
+      <if test="faceid != null" >
+        #{faceid,jdbcType=VARCHAR},
+      </if>
+      <if test="reid != null" >
+        #{reid,jdbcType=VARCHAR},
+      </if>
+      <if test="faceFeature != null" >
+        #{faceFeature,jdbcType=VARCHAR},
+      </if>
+      <if test="bodyFeature != null" >
+        #{bodyFeature,jdbcType=VARCHAR},
+      </if>
+      <if test="roi != null" >
+        #{roi,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yckj.commonmapper.model.BaseInfo" >
+    update base_info
+    <set >
+      <if test="cameraid != null" >
+        cameraId = #{cameraid,jdbcType=INTEGER},
+      </if>
+      <if test="faceid != null" >
+        faceId = #{faceid,jdbcType=VARCHAR},
+      </if>
+      <if test="reid != null" >
+        reId = #{reid,jdbcType=VARCHAR},
+      </if>
+      <if test="faceFeature != null" >
+        face_feature = #{faceFeature,jdbcType=VARCHAR},
+      </if>
+      <if test="bodyFeature != null" >
+        body_feature = #{bodyFeature,jdbcType=VARCHAR},
+      </if>
+      <if test="roi != null" >
+        roi = #{roi,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yckj.commonmapper.model.BaseInfo" >
+    update base_info
+    set cameraId = #{cameraid,jdbcType=INTEGER},
+      faceId = #{faceid,jdbcType=VARCHAR},
+      reId = #{reid,jdbcType=VARCHAR},
+      face_feature = #{faceFeature,jdbcType=VARCHAR},
+      body_feature = #{bodyFeature,jdbcType=VARCHAR},
+      roi = #{roi,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="getAll" resultMap="BaseResultMap" parameterType="map" >
+    select <include refid="Base_Column_List" /> from base_info where 1=1 <include refid="Base_Where" />
+  </select>
+  <select id="pageCount" resultType="java.lang.Integer" parameterType="map" >
+    select count(1) from base_info where 1=1 <include refid="Base_Where" />
+  </select>
+  <select id="pageData" resultMap="BaseResultMap" parameterType="map" >
+    select <include refid="Base_Column_List" /> from base_info where 1=1 <include refid="Base_Where" />
+  </select>
+
+  <select id="findAll"  resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from base_info
+  </select>
+<select id="findByCondition" parameterType="map" resultMap="BaseResultMap">
+select <include refid="Base_Column_List" /> from base_info
+  where 1=1
+ <!-- <if test="id != null" >
+   and id = #{id}
+  </if>-->
+  and id=(select max(id) from base_info)
+</select>
+</mapper>
